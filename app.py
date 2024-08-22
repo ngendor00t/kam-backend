@@ -1,10 +1,7 @@
-from flask import Flask, jsonify
 from flask import Flask
 from flask_migrate import Migrate
 
-from models import db
-
-
+from models import db,Country,exportproduct,
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///kam.db'
@@ -13,7 +10,6 @@ db.init_app(app)
 
 migrate = Migrate(app, db)
 
-db.init_app(app)
 
 
 

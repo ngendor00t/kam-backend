@@ -3,30 +3,30 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
 
 
-db = SQLAlchemy( )
+db = SQLAlchemy()
 
-# class Country (db.Model):
-#     __tablename__='countries'
+class Country (db.Model):
+    __tablename__='countries'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     Countryname = db.Column(db.String(45), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    Countryname = db.Column(db.String(45), nullable=False)
 
-#     export_products = relationship('ExportProduct', back_populates='country')
-
-
-# class exportproduct(db.Model):
-#     __tablename__='exportproducts'
-
-#     id =db.column(db.Interger,primary_key=True)
-#     short_des=db.column(db.String())
-#     quantity=db.column(db.Interger())
-#     FOBvalue=db.column(db.Interger())
-#     unit=db.column(db.string())
-#     year=db.column(db.Interger())
+    export_products = relationship('ExportProduct', back_populates='country')
 
 
-#     country_id = db.Column(db.Integer, ForeignKey('countries.id'))
-#     country = relationship('Country', back_populates='export_products')
+class exportproduct(db.Model):
+    __tablename__='exportproducts'
+
+    id =db.Column(db.Integer,primary_key=True)
+    short_des=db.Column(db.String())
+    quantity=db.Column(db.Integer())
+    FOBvalue=db.Column(db.Integer())
+    unit=db.Column(db.String())
+    year=db.Column(db.Integer())
+
+
+    country_id = db.Column(db.Integer, ForeignKey('countries.id'))
+    country = relationship('Country', back_populates='export_products')
 
 
 
