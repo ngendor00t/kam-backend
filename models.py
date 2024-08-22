@@ -5,14 +5,13 @@ from sqlalchemy import ForeignKey
 
 db = SQLAlchemy()
 
-class Country (db.Model):
-    __tablename__= 'countries'
-
+class Country(db.Model):
+    __tablename__='countries'
+    
     id = db.Column(db.Integer, primary_key=True)
     Countryname = db.Column(db.String(45), nullable=False)
 
     export_products = relationship('ExportProduct', back_populates='country')
-
 
 class Exportproduct(db.Model):
     __tablename__='exportproducts'
