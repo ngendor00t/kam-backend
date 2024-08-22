@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from flask import Flask
 from flask_migrate import Migrate
-
+import logging
 from models import db
 
 
@@ -13,8 +13,11 @@ db.init_app(app)
 
 migrate = Migrate(app, db)
 
-db.init_app(app)
-
+try:
+    db.init_app(app)
+    logging.info("Database initialized")
+except Exception as e:
+    logging.error(f"Error initializing database: {e}")
 
 
 if __name__ == '__main__':
